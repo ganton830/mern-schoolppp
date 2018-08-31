@@ -39,11 +39,11 @@ function logout() {
   return { type: userConstants.LOGOUT };
 }
 
-function register(email, password) {
+function register(username,email, password) {
   return dispatch => {
     dispatch(request());
 
-    userService.register(email, password)
+    userService.register(username, email, password)
       .then(
         user => {
           dispatch(success(user));

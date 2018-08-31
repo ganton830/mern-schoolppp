@@ -56,8 +56,7 @@ exports.createUser = async function(req, res, next) {
   let user = {
     email: req.body.email,
     password: req.body.password,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    username: req.body.username,
   };
 
   console.log(user);

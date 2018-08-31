@@ -1,7 +1,7 @@
 const bluebird = require('bluebird');
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://localhost/OpenAdmin';
+const connectionString = 'mongodb://localhost/mernSchoolppp';
 
 mongoose.Promise = bluebird;
 mongoose.connect(connectionString, { useMongoClient: true });

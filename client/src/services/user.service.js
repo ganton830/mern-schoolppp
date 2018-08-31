@@ -43,11 +43,11 @@ function logout() {
   localStorage.removeItem('auth_user');
 }
 
-function register(email, password) {
+function register(username,email, password) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({ username, email, password })
   };
 
   return fetch('http://127.0.0.1:3003/user/register', requestOptions)

@@ -6,8 +6,6 @@ let UserSchema = new mongoose.Schema({
   password: String,
   email: String,
   avatar: String,
-  firstName: String,
-  lastName: String
 });
 
 UserSchema.plugin(mongoosePaginate);
