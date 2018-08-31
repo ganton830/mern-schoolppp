@@ -4,7 +4,7 @@ import { layoutActions } from "../../actions/layout.actions";
 import classNames from "classnames";
 import {authHeader} from "../../helpers/auth-header";
 import MessagesComponent from "../Messages";
-
+import { userActions } from '../../actions/user.actions';
 class ToolbarComponent extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +25,12 @@ class ToolbarComponent extends Component {
     this.onProfileDropdownClick = this.onProfileDropdownClick.bind(this);
     this.onMessagesDropdownClick = this.onMessagesDropdownClick.bind(this);
     this.onNotifyDropdownClick = this.onNotifyDropdownClick.bind(this);
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('auth_user');
+    // console.log(JSON.parse(localStorage.removeItem('auth_user')).data.token);
   }
 
   leftSidebarToggle() {
@@ -161,7 +167,7 @@ class ToolbarComponent extends Component {
           <li className="m-sm-1 m-md-2">
             <a data-toggle="dropdown" id="dropdownBasic3" onClick={this.onProfileDropdownClick}>
               <div className="d-inline-block mr-2">
-                <img src={user_avatar} className="rounded-circle" height="32px"/>
+                <img src={process.env.PUBLIC_URL + '/1.jpg'} className="rounded-circle" height="32px"/>
               </div>
               <div className="d-none d-lg-inline-block">
                 <span className="d-block">{user_email}</span>
@@ -169,7 +175,7 @@ class ToolbarComponent extends Component {
             </a>
 
             <div className={classNames('dropdown-menu', 'dropdown-menu-right', { show: this.state.showProfileDropdown})}>
-              <a className="dropdown-item">
+              {/* <a className="dropdown-item">
                 <i className="fa fa-user-circle-o" aria-hidden="true"/> Profile
               </a>
               <a className="dropdown-item">
@@ -178,9 +184,9 @@ class ToolbarComponent extends Component {
               <a className="dropdown-item">
                 <i className="fa fa-envelope-o" aria-hidden="true"/> Mailbox
               </a>
-              <div className="dropdown-divider"/>
+              <div className="dropdown-divider"/> */}
               <a className="dropdown-item">
-                <i className="fa fa-sign-out" aria-hidden="true"/> Logout
+                <i className="fa fa-sign-out" aria-hidden="true" /> Logout
               </a>
             </div>
 

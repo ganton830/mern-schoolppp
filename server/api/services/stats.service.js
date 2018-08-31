@@ -40,6 +40,8 @@ exports.getCharts = async function() {
   // Try Catch the awaited promise to handle the error
   try {
     let charts = await Stats.findOne({type: 'charts'});
+
+    console.log('====chart=====')
     // Return the stats list that was returned by the mongoose promise
     return charts;
   } catch (e) {

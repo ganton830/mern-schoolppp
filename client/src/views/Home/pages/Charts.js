@@ -22,11 +22,12 @@ class ChartsPage extends Component {
   }
 
   componentWillMount() {
-    // this.loadChartsData();
+    this.loadChartsData();
   }
 
   loadChartsData() {
-    fetch('/stats/charts', this.requestOptions)
+    console.log('===loading===');
+    fetch('http://127.0.0.1:3003/stats/charts', this.requestOptions)
       .then(response => response.json())
       .then(response => {
         let charts = response.data[0];

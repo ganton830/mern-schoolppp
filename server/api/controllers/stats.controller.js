@@ -36,6 +36,7 @@ exports.getSummary = async function(req, res, next) {
 };
 
 exports.getCharts = async function(req, res, next) {
+  console.log('===chart123====')
   try {
     let charts = await StatsService.getCharts();
     // Return the users list with the appropriate HTTP Status Code and Message.

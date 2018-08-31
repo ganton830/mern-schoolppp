@@ -50,7 +50,7 @@ class MainNavComponent extends Component {
           <li className="nav-item">
             <Link className="nav-link" to={`${process.env.PUBLIC_URL}/tables`}>
               <i className="fa fa-table" aria-hidden="true"/>
-              <span className="d-none d-lg-inline">Tables</span>
+              <span className="d-none d-lg-inline">Users</span>
             </Link>
           </li>
           <li className="nav-item">
