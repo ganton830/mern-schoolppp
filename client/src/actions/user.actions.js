@@ -16,9 +16,6 @@ function login(email, password) {
     userService.login(email, password)
       .then(
         user => {
-      console.log('===here444===')
-      console.log(user)
-
           dispatch(success(user));
           history.push(`${process.env.PUBLIC_URL}/`);
         },
@@ -39,7 +36,7 @@ function logout() {
   return { type: userConstants.LOGOUT };
 }
 
-function register(username,email, password) {
+function register(username, email, password) {
   return dispatch => {
     dispatch(request());
 

@@ -8,7 +8,7 @@ const app = express();
 // Parsers
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Routes
 app.use('/user', require('./api/routes/user.route'));
+app.use('/schools', require('./api/routes/schools.route'));
 app.use('/stats', require('./api/routes/stats.route'));
 app.use('/messages', require('./api/routes/messages.route'));
 

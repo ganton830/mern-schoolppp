@@ -26,7 +26,6 @@ class ChartsPage extends Component {
   }
 
   loadChartsData() {
-    console.log('===loading===');
     fetch('http://127.0.0.1:3003/stats/charts', this.requestOptions)
       .then(response => response.json())
       .then(response => {

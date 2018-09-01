@@ -2239,7 +2239,7 @@ tbody.collapse.show {
   justify-content: flex-start; }
   .btn-toolbar .input-group {
     width: auto; }
-
+.
 .btn-group > .btn:first-child {
   margin-left: 0; }
 
@@ -5693,7 +5693,10 @@ button.bg-dark:focus {
 
 .text-center {
   text-align: center !important; }
-
+.button-center {
+  display: flex;align-items: center;justify-content: center; }
+.button-margin{
+  margin-right: 1em; }
 @media (min-width: 576px) {
   .text-sm-left {
     text-align: left !important; }

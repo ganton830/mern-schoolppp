@@ -12,6 +12,9 @@ import FormsPage from "./pages/Forms";
 import ChartsPage from "./pages/Charts";
 import WidgetsPage from "./pages/Widgets";
 import TablesPage from "./pages/Tables";
+import AddSchoolPage from "./pages/AddSchool";
+import SaveSchoolPage from "./pages/SaveSchool";
+import TableEditPage from "./pages/TableEdit";
 import ButtonsPage from "./pages/Buttons";
 import TypographyPage from "./pages/Typography";
 import IconsPage from "./pages/Icons";
@@ -24,39 +27,44 @@ export const HomeView = () => {
   return (
     <div className="row">
 
-      <SidebarLeftComponent/>
+      <SidebarLeftComponent />
 
       <div className="main-wrapper">
 
-        <ToolbarComponent/>
+        <ToolbarComponent />
 
         <main>
 
           <div>
             <Switch>
-              <Route exact path={`${process.env.PUBLIC_URL}/`} component={DashboardPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={DashboardPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/charts`} component={ChartsPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/widgets`} component={WidgetsPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/tables`} component={TablesPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/grid`} component={GridPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/buttons`} component={ButtonsPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/typography`} component={TypographyPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/icons`} component={IconsPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/navs`} component={NavsPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/badges`} component={BadgesPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/progress`} component={ProgressPage}/>
-              <Route path={`${process.env.PUBLIC_URL}/forms`} component={FormsPage}/>
-              <Route path="*" component={NotFoundPage}/>
+              <Route exact path={`${process.env.PUBLIC_URL}/`} component={DashboardPage} />
+              <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={DashboardPage} />
+              <Route path={`${process.env.PUBLIC_URL}/charts`} component={ChartsPage} />
+              <Route path={`${process.env.PUBLIC_URL}/widgets`} component={WidgetsPage} />
+              <Route path={`${process.env.PUBLIC_URL}/tables`} component={TablesPage} />
+              <Route path={`${process.env.PUBLIC_URL}/edit/:id`} component={TableEditPage} />
+
+              <Route path={`${process.env.PUBLIC_URL}/addSchool`} component={AddSchoolPage} />
+              <Route path={`${process.env.PUBLIC_URL}/schools/:id`} component={SaveSchoolPage} />
+
+              <Route path={`${process.env.PUBLIC_URL}/grid`} component={GridPage} />
+              <Route path={`${process.env.PUBLIC_URL}/buttons`} component={ButtonsPage} />
+              <Route path={`${process.env.PUBLIC_URL}/typography`} component={TypographyPage} />
+              <Route path={`${process.env.PUBLIC_URL}/icons`} component={IconsPage} />
+              <Route path={`${process.env.PUBLIC_URL}/navs`} component={NavsPage} />
+              <Route path={`${process.env.PUBLIC_URL}/badges`} component={BadgesPage} />
+              <Route path={`${process.env.PUBLIC_URL}/progress`} component={ProgressPage} />
+              <Route path={`${process.env.PUBLIC_URL}/forms`} component={FormsPage} />
+              <Route path="*" component={NotFoundPage} />
             </Switch>
           </div>
 
         </main>
 
-        <FooterComponent/>
+        <FooterComponent />
       </div>
 
-      <SidebarRightComponent/>
+      <SidebarRightComponent />
 
     </div>
   );

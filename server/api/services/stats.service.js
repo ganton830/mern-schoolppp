@@ -1,9 +1,9 @@
 const Stats = require('../models/stats.model');
 
-exports.getMonitoring = async function() {
+exports.getMonitoring = async function () {
   // Try Catch the awaited promise to handle the error
   try {
-    let monitoring = await Stats.findOne({type: 'monitoring'});
+    let monitoring = await Stats.findOne({ type: 'monitoring' });
     // Return the stats list that was returned by the mongoose promise
     return monitoring;
   } catch (e) {
@@ -12,10 +12,10 @@ exports.getMonitoring = async function() {
   }
 };
 
-exports.getSales = async function() {
+exports.getSales = async function () {
   // Try Catch the awaited promise to handle the error
   try {
-    let sales = await Stats.findOne({type: 'sales'});
+    let sales = await Stats.findOne({ type: 'sales' });
     // Return the stats list that was returned by the mongoose promise
     return sales;
   } catch (e) {
@@ -24,10 +24,10 @@ exports.getSales = async function() {
   }
 };
 
-exports.getSummary = async function() {
+exports.getSummary = async function () {
   // Try Catch the awaited promise to handle the error
   try {
-    let summary = await Stats.findOne({type: 'summary'});
+    let summary = await Stats.findOne({ type: 'summary' });
     // Return the stats list that was returned by the mongoose promise
     return summary;
   } catch (e) {
@@ -36,12 +36,11 @@ exports.getSummary = async function() {
   }
 };
 
-exports.getCharts = async function() {
+exports.getCharts = async function () {
   // Try Catch the awaited promise to handle the error
   try {
-    let charts = await Stats.findOne({type: 'charts'});
+    let charts = await Stats.findOne({ type: 'charts' });
 
-    console.log('====chart=====')
     // Return the stats list that was returned by the mongoose promise
     return charts;
   } catch (e) {
@@ -50,7 +49,7 @@ exports.getCharts = async function() {
   }
 };
 
-exports.updateStats = async function() {
+exports.updateStats = async function () {
   // Creating a new Mongoose Object by using the new keyword
   let newStats = new Stats({
     type: 'sales',
@@ -65,7 +64,7 @@ exports.updateStats = async function() {
     // Saving the User
     let savedStats = await newStats.save();
     return savedStats;
-  } catch(e) {
+  } catch (e) {
     // return an Error message describing the reason
     throw Error("Error while Creating Stats");
   }

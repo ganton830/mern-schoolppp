@@ -7,6 +7,7 @@ import { alertActions } from './actions/alert.actions';
 import { PrivateRoute } from './views/PrivateRoute';
 import { HomeView } from './views/Home';
 import { LoginView } from './views/Login';
+import TablesPage from "./views/Home/pages/Tables";
 
 class App extends Component {
   constructor(props) {

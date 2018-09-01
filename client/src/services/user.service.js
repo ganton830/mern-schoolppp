@@ -23,13 +23,8 @@ function login(email, password) {
       return response.json();
     })
     .then(data => {
-      console.log('===here111===')
-      console.log(data)
-
       // login successful if there's a jwt token in the response
       if (data) {
-      console.log('===here222===')
-        
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('auth_user', JSON.stringify(data));
       }
@@ -43,7 +38,7 @@ function logout() {
   localStorage.removeItem('auth_user');
 }
 
-function register(username,email, password) {
+function register(username, email, password) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

@@ -3,14 +3,14 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 
 // Async function to get the User List
-exports.authenticate = async function(email, password) {
+exports.authenticate = async function (email, password) {
   try {
     let user = await User.findOne({ 'email': email });
     // Return the authenticated user that was returned by the mongoose promise
 
     let result = await bcrypt.compare(password, user.password);
 
-    if ( result ) {
+    if (result) {
       return {
         _id: user._id,
         username: user.username,
@@ -29,7 +29,7 @@ exports.authenticate = async function(email, password) {
   }
 };
 
-exports.getUsers = async function(query, page, limit) {
+exports.getUsers = async function (query, page, limit) {
 
   // Options setup for the mongoose paginate
   let options = {
@@ -48,7 +48,7 @@ exports.getUsers = async function(query, page, limit) {
   }
 };
 
-exports.createUser = async function(user) {
+exports.createUser = async function (user) {
 
   // Creating a new Mongoose Object by using the new keyword
   let newUser = new User({
@@ -63,22 +63,34 @@ exports.createUser = async function(user) {
     // Saving the User
     let savedUser = await newUser.save();
     return savedUser;
-  } catch(e) {
+  } catch (e) {
     // return an Error message describing the reason
     throw Error("Error while Creating User");
   }
 };
 
-exports.updateUser = async function(user) {
+exports.getUserById = async function (id) {
+
+  try {
+    //Find the old User Object by the Id
+    user = await User.findById(id);
+    return user;
+  } catch (e) {
+    throw Error("Error occured while Finding the User");
+  }
+
+
+};
+
+
+exports.updateUser = async function (user) {
   let id = user.id;
   let oldUser;
 
   try {
     //Find the old User Object by the Id
-    console.log('====4=====')
-    console.log(id);
     oldUser = await User.findById(id);
-  } catch(e) {
+  } catch (e) {
     throw Error("Error occured while Finding the User");
   }
 
@@ -87,35 +99,29 @@ exports.updateUser = async function(user) {
     return false;
   }
 
-    console.log('====5=====')
-    console.log(oldUser);
-
   //Edit the User Object
   oldUser.firstName = user.firstName || oldUser.firstName;
   oldUser.lastName = user.lastName || oldUser.lastName;
   oldUser.avatar = user.avatar || oldUser.avatar;
 
-  console.log(oldUser);
-  console.log('====6=====')
-
   try {
     let savedUser = await oldUser.save();
     return savedUser;
-  } catch(e) {
+  } catch (e) {
     throw Error("And Error occured while updating the User");
   }
 };
 
-exports.deleteUser = async function(id) {
+exports.deleteUser = async function (id) {
 
   // Delete the User
   try {
-    let deleted = await User.remove({_id: id});
+    let deleted = await User.remove({ _id: id });
     if (deleted.result.n === 0) {
       throw Error("User Could not be deleted");
     }
     return deleted;
-  } catch(e) {
+  } catch (e) {
     throw Error("Error Occured while Deleting the User")
   }
 };
