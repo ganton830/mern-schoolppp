@@ -3,17 +3,16 @@ const jwt = require('jsonwebtoken');
 const School = require('../models/school.model');
 
 exports.createdSchool = async function (school) {
-  console.log(school.schoolName)
 
   // Creating a new Mongoose Object by using the new keyword
   let newSchool = new School({
     schoolName: school.schoolName,
-    schoolData: {
-      year: school.schoolData.year,
-      month: school.schoolData.month,
-      week: school.schoolData.week
-    }
+    schoolData: [
+      { year: '' , month: '' , week: '', elecEuro: '' , elecKwh: '',  heatEuro: '', heatKwh: '' , waterEuro: '' , waterLiter: '' }
+
+    ]
   });
+  console.log(newSchool)
 
   try {
     // Saving the User
@@ -25,7 +24,7 @@ exports.createdSchool = async function (school) {
   }
 };
 
-exports.getSchool = async function (query) {
+exports.getSchool = async function (req, res) {
 
   try {
     let school = await School.find();
@@ -37,6 +36,7 @@ exports.getSchool = async function (query) {
     throw Error('Error while Paginating Users');
   }
 };
+
 
 
 exports.getSchoolById = async function (id) {
@@ -52,6 +52,69 @@ exports.getSchoolById = async function (id) {
 
 };
 
+// exports.saveSchool = async function (schoolid) {
+
+//   console.log('school.schoolData')
+//   school = await School.findById(schoolid);
+//   console.log(school)
+
+//   const ssss = school.schoolData.push({
+//           year: parseInt(school.year),
+//           month: parseInt(school.month),
+//           week: parseInt(school.week),
+//           elecEuro: parseInt(school.elecEuro),
+//           elecKwh: parseInt(school.elecKwh),
+//           heatEuro: parseInt(school.heatEuro),
+//           heatKwh: parseInt(school.heatKwh),
+//           waterEuro: parseInt(school.waterEuro),
+//           waterLiter: parseInt(school.waterLiter)
+//   });
+  
+  // console.log(ssss)
+ 
+  // school.save();
+
+  // // Creating a new Mongoose Object by using the new keyword
+  // School.findById(schoolid)
+  //   .exec((err, school) => {
+  //     if (err) {
+  //       res
+  //         .status(400)
+  //         .json(err);
+  //     } else {
+  // console.log(school)
+
+  //       school.push({
+  //         year: parseInt(school.year),
+  //         month: parseInt(school.month),
+  //         week: parseInt(school.week),
+  //         elecEuro: parseInt(school.elecEuro),
+  //         elecKwh: parseInt(school.elecKwh),
+  //         heatEuro: parseInt(school.heatEuro),
+  //         heatKwh: parseInt(school.heatKwh),
+  //         waterEuro: parseInt(school.waterEuro),
+  //         waterLiter: parseInt(school.waterLiter)
+
+  //       });
+
+        // school.save((err, school) => {
+        //   if (err) {
+        //     console.log(err);
+        //     res
+        //       .status(400)
+        //       .json(err);
+        //   } else {
+        //     res
+        //       .status(201)
+        //       .json({ "message": "success", "data": school });
+        //   }
+        // });
+
+  //     }
+  //   });
+
+
+// };
 
 exports.updateUser = async function (user) {
   let id = user.id;

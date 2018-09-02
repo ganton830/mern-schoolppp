@@ -34,7 +34,7 @@ class SidebarLeftComponent extends Component {
   render() {
     const { layout } = this.props;
     return (
-      <div className={classNames("sidebar-left", "bg-dark", "text-light", "pl-0", "pr-0", { collapse: !layout.left_sidebar_visible })} id="sidebar-left">
+      <div className={classNames("sidebar-left", "bg-dark", "text-light", "pl-0", "pr-0", { collapse: layout.left_sidebar_visible })} id="sidebar-left">
         <div className="collapse-wrapper">
           <Logo/>
           <MainNavComponent/>

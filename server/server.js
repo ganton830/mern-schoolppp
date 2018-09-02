@@ -4,7 +4,8 @@ const path = require('path');
 const cors = require('cors');
 const expressJwt = require('express-jwt');
 const app = express();
-
+const apiRoutes = require('./api/routes/index');
+// require('./api/models/db');
 // Parsers
 app.use(cors());
 app.use(bodyParser.json());
@@ -28,10 +29,16 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Routes
 app.use('/user', require('./api/routes/user.route'));
-app.use('/schools', require('./api/routes/schools.route'));
+// app.use('/schools', require('./api/routes/schools.route'));
 app.use('/stats', require('./api/routes/stats.route'));
 app.use('/messages', require('./api/routes/messages.route'));
-
+//
+app.use('/api', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+app.use('/api', apiRoutes);
 // Start the server
 const port = process.env.PORT || '3003';
 app.listen(port, () => console.log(`Running on localhost:${port}`));

@@ -186,7 +186,7 @@ class ToolbarComponent extends Component {
               </a>
               <div className="dropdown-divider"/> */}
               <a className="dropdown-item">
-                <i className="fa fa-sign-out" aria-hidden="true" /> Logout
+                {/* <i className="fa fa-sign-out" onClick={this.logout()} aria-hidden="true" /> Logout */}
               </a>
             </div>
 

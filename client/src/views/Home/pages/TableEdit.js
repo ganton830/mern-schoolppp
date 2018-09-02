@@ -59,7 +59,7 @@ class TableEditPage extends Component {
     };
     return fetch('http://127.0.0.1:3003/user/' + this.props.match.params.id, requestOptions)
       .then(response => {
-        this.props.history.push("/");
+        this.props.history.push("/tables");
       })
   }
 

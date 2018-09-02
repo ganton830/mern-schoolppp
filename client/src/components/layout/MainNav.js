@@ -21,10 +21,11 @@ class MainNavComponent extends Component {
   }
 
   loadSchoolData() {
-    fetch('http://127.0.0.1:3003/schools', { method: 'get' }, this.requestOptions)
+    fetch('http://127.0.0.1:3003/api/schools', { method: 'get' }, this.requestOptions)
       .then(response => response.json())
       .then(response => {
-        this.setState({ schools: response.data })
+        console.log(response)
+        this.setState({ schools: response })
       });
   }
 
