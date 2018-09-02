@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// let dbURI = 'mongodb://localhost:27017/schoolppp';
+let dbURI = 'mongodb://localhost:27017/mernSchoolppp';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGODB_URI;
 }
@@ -48,5 +48,5 @@ require('./schools');
 // require('./users');
 
 module.exports = {
-  User: require('../../users/user.model')
+  User: require('./user.model')
 };

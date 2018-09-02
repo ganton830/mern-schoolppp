@@ -4,5 +4,5 @@ const mongoose = require('mongoose');
 const connectionString = 'mongodb://localhost/mernSchoolppp';
 
 mongoose.Promise = bluebird;
-mongoose.connect(connectionString, { useMongoClient: true });
+mongoose.connect(connectionString);
 module.exports = { mongoose };

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const School = mongoose.model('School');
-// const School = require('../models/schools');
 
 const schoolsHome = function (req, res) {
+
     School
         .find()
         .exec((err, school) => {
@@ -21,8 +21,10 @@ const schoolsAdd = function (req, res) {
 };
 
 const schoolsCreate = function (req, res) {
+    console.log('name')
+    console.log(req.body.temp)
     let newSchool = new School({
-        name: req.body.name
+        schoolName: req.body.temp.schoolName
     });
 
     newSchool.save((err, school)=>{
@@ -94,8 +96,8 @@ const statisticsCreate = function (req, res) {
 };
 
 const statisticsSave = function (req, res) {
-console.log('====schools.js==')
-    const schoolid = req.body._id;
+    console.log(req.body.data)
+    const schoolid = req.body.data._id;
     School
         .findById(schoolid)
         .exec((err, school) => {
@@ -105,15 +107,15 @@ console.log('====schools.js==')
                     .json(err);
             } else {
                 school.schoolData.push({
-                    year: parseInt(req.body.year),
-                    week: parseInt(req.body.week),
-                    month: parseInt(req.body.month),
-                    elecEuro: parseFloat(req.body.elecEuro),
-                    elecKwh: parseFloat(req.body.elecKwh),
-                    heatEuro: parseFloat(req.body.heatEuro),
-                    heatKwh: parseFloat(req.body.heatKwh),
-                    waterEuro: parseFloat(req.body.waterEuro),
-                    waterLiter: parseFloat(req.body.waterLiter)
+                    year: parseInt(req.body.data.year),
+                    week: parseInt(req.body.data.week),
+                    month: parseInt(req.body.data.month),
+                    elecEuro: parseFloat(req.body.data.elecEuro),
+                    elecKwh: parseFloat(req.body.data.elecKwh),
+                    heatEuro: parseFloat(req.body.data.heatEuro),
+                    heatKwh: parseFloat(req.body.data.heatKwh),
+                    waterEuro: parseFloat(req.body.data.waterEuro),
+                    waterLiter: parseFloat(req.body.data.waterLiter)
                 });
                 school.save((err, school) => {
                     if (err) {

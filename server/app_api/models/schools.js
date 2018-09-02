@@ -48,4 +48,3 @@ const schoolSchema = new mongoose.Schema({
 });
 
 mongoose.model('School', schoolSchema);
-

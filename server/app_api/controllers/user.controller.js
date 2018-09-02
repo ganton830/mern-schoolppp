@@ -56,6 +56,8 @@ exports.getUserById = async function (req, res, next) {
 
 exports.createUser = async function (req, res, next) {
 
+  console.log('===userCOntroller===')
+
   let user = {
     email: req.body.email,
     password: req.body.password,
@@ -65,6 +67,7 @@ exports.createUser = async function (req, res, next) {
   try {
 
     let createdUser = await UserService.createUser(user);
+
     return res.status(201).json({ status: 201, data: createdUser, message: "Successfully Created User" })
   } catch (e) {
 
