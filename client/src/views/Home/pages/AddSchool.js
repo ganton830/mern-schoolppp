@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import WidgetComponent from "../../../components/Widget";
 import { authHeader } from "../../../helpers/auth-header";
-import {ToastContainer, ToastStore} from 'react-toasts';
+// import {ToastContainer, ToastStore} from 'react-toasts';
 
 class AddSchoolsPage extends Component {
 
@@ -59,7 +59,7 @@ class AddSchoolsPage extends Component {
 
         <div className="row">
         {/* <button onClick={() => }>Click me !</button> */}
-        <ToastContainer  position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore}/>
+        {/* <ToastContainer  position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore}/> */}
 
           <div className="col-lg-12 mb-3">
             <WidgetComponent header='Add School' className='shadow-01' excerpt=''>
