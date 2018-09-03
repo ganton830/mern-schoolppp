@@ -10,6 +10,8 @@ const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 require('app_api/models/db');
 
+const fileUpload = require('express-fileupload');
+
 // const index = require('./app_server/routes/index');
 const apiRoutes = require('./app_api/routes/index');
 
@@ -40,6 +42,35 @@ app.use('/api', function(req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
+
+// app.use('/static', express.static('./server/static'));
+app.use(cookieParser());
+app.use(fileUpload());
+app.use('/public', express.static(__dirname + '/public'));
+app.post('/upload', (req, res, next) => {
+  console.log(req.files.file);
+  // var imageName = file.fieldname + '-' + datetimestamp + '.' +
+  //  file.originalname.split('.')[file.originalname.split('.').length -1];
+  console.log('=======')
+  var datetimestamp = Date.now();
+  console.log(datetimestamp+'-'+req.files.file.name);
+
+
+  let imageFile = req.files.file;
+  let filename = datetimestamp+'-'+req.files.file.name;
+  imageFile.mv(`${__dirname}/public/${filename}`, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    res.json({file: `public/${filename}`});
+  });
+
+})
+
+
+
+
 
 // api routes
 // app.use('/users', require('./users/users.controller'));

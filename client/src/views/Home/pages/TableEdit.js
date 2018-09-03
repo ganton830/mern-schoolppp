@@ -13,8 +13,14 @@ class TableEditPage extends Component {
       user: {
         username: '',
         email: '',
-      }
+      
+      },
+      avatar: '/default.jpg',
+      value:false
     };
+
+    this.onChangeImage = this.onChangeImage.bind(this);
+
 
     this.onEditSubmit = this.onEditSubmit.bind(this);
     this.requestOptions = {
@@ -43,7 +49,7 @@ class TableEditPage extends Component {
 
   onEditSubmit(e) {
     e.preventDefault();
-
+   
     const { username, email } = this.state.user;
     const { dispatch } = this.props;
     if (username && email) {
@@ -63,6 +69,24 @@ class TableEditPage extends Component {
       })
   }
 
+  onChangeImage(ev) {
+    ev.preventDefault();
+
+    const data = new FormData();
+    data.append('file', this.uploadInput.files[0]);
+    // data.append('filename', this.fileName.value);
+
+    fetch('http://127.0.0.1:3003/upload', {
+      method: 'POST',
+      body: data,
+    }).then((response) => {
+      response.json().then((body) => {
+        this.setState({ avatar: `http://127.0.0.1:3003/${body.file}` });
+        this.state.isSelected = true;
+      });
+    });
+  }
+
   render() {
 
     return (
@@ -71,16 +95,33 @@ class TableEditPage extends Component {
           <WidgetComponent header='Edit User' className='shadow-01 mb-4' excerpt=''>
             <form className="container" onSubmit={this.onEditSubmit}>
               <div className="row">
-                <div className="col-md-6 mb-3">
+
+                <div className="col-md-2">
+
+                  <div className="image-upload">
+                    <label htmlFor="file-input">
+                      <img src={process.env.PUBLIC_URL + this.state.avatar} className="rounded-circle " height="50px"  width="50px"/>
+                    </label>
+
+                    <input ref={(ref) => { this.uploadInput = ref; }} type="file" id="file-input" name="file"   onChange={this.onChangeImage} />
+                  </div>
+
+                </div>
+
+                <div className="col-md-5">
                   <label htmlFor="validationCustom01">User Name</label>
                   <input type="text" className="form-control" placeholder="User name" name="username" onChange={this.onChange} value={this.state.user.username} required />
                 </div>
-                <div className="col-md-6 mb-3">
+
+                <div className="col-md-5">
                   <label htmlFor="validationCustom02">Email</label>
                   <input type="text" className="form-control" placeholder="Email" onChange={this.onChange} name="email" value={this.state.user.email} required />
                 </div>
+
               </div>
+              <div className="margin2">
               <button className="btn btn-primary" type="submit">Update</button>
+              </div>
             </form>
           </WidgetComponent>
         </div>

@@ -635,7 +635,37 @@ pre {
 
 .offset-11 {
   margin-left: 91.66667%; }
-
+.avatar{
+  height: 40px;
+  width: 40px;
+  border:1px solid goldenrod;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+}
+.td-vertical-init{
+  vertical-align: initial;
+}
+input#file {
+  display: inline-block;
+  width: 100%;
+  padding: 120px 0 0 0;
+  height: 100px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url('http://archisnapper.com/cloud.png') center center no-repeat #e4e4e4;
+  border-radius: 20px;
+  background-size: 150px 100px;
+}
+.image-upload > input
+{
+    display: none;
+}
+.margin2{
+  margin: 2em 0;
+}
 @media (min-width: 576px) {
   .col-sm {
     flex-basis: 0;
@@ -2239,7 +2269,7 @@ tbody.collapse.show {
   justify-content: flex-start; }
   .btn-toolbar .input-group {
     width: auto; }
-.
+
 .btn-group > .btn:first-child {
   margin-left: 0; }
 

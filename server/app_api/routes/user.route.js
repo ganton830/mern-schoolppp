@@ -16,8 +16,11 @@ router.get('/', UserController.getUsers);
 router.get('/:id', UserController.getUserById);
 // router.put('/:id', UserController.updateUserById);
 router.put('/:id', function (req, res, next) {
+ 
   User.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
+    console.log('===route=====')
+    console.log(req.body);
     res.json(post);
   });
 });

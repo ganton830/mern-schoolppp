@@ -62,6 +62,7 @@ exports.createUser = async function (req, res, next) {
     email: req.body.email,
     password: req.body.password,
     username: req.body.username,
+    file:''
   };
 
   try {

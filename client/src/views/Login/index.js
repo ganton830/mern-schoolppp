@@ -6,6 +6,7 @@ import { userActions } from '../../actions/user.actions';
 import LogoComponent from "../../components/Logo";
 import { connect } from "react-redux";
 
+
 class LoginView extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,11 @@ class LoginView extends Component {
       registerEmail: '',
       registerPassword: '',
       registerSubmitted: false,
+
+      //image upload
+      pictures: [] 
     };
+    this.onDrop = this.onDrop.bind(this);
 
     this.toggle = this.toggle.bind(this);
 
@@ -32,6 +37,12 @@ class LoginView extends Component {
     this.loginSubmit = this.loginSubmit.bind(this);
     this.registerSubmit = this.registerSubmit.bind(this);
   }
+
+  onDrop(picture) {
+    this.setState({
+        pictures: this.state.pictures.concat(picture),
+    });
+}
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
@@ -123,6 +134,8 @@ class LoginView extends Component {
                   </TabPane>
                   <TabPane tabId="register">
                     <form onSubmit={this.registerSubmit}>
+         
+                        
                       <div className="form-row">
                         <div className="form-group col-md-12">
                           <input type="text" name="registerusername" className="form-control" value={registerusername} onChange={this.formChange} placeholder="Enter username" autoComplete="off" required/>

@@ -173,12 +173,12 @@ class SaveSchoolPage extends Component {
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <label className="col-form-label">Electro euro</label>
-                    <input type="text"  onChange={this.onChange}  value={schoolData.elecEuro}
+                    <input type="number"  onChange={this.onChange}  value={schoolData.elecEuro}
                     name="elecEuro"  className="form-control" placeholder="Electro euro" required/>
                   </div>
                   <div className="form-group col-md-6">
                     <label className="col-form-label">Electro Kwh</label>
-                    <input type="text"  onChange={this.onChange}   value={schoolData.elecKwh}
+                    <input type="number"  onChange={this.onChange}   value={schoolData.elecKwh}
                     name="elecKwh"  className="form-control" placeholder="Electro Kwh" required/>
                   </div>
                 </div>
@@ -186,12 +186,12 @@ class SaveSchoolPage extends Component {
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <label className="col-form-label">Heating euro</label>
-                    <input type="text"  onChange={this.onChange}    value={schoolData.heatEuro}
+                    <input type="number"  onChange={this.onChange}    value={schoolData.heatEuro}
                     name="heatEuro"  className="form-control" placeholder="Heating euro" required/>
                   </div>
                   <div className="form-group col-md-6">
                     <label className="col-form-label">Heating Kwh</label>
-                    <input type="text"  onChange={this.onChange}  value={schoolData.heatKwh}
+                    <input type="number"  onChange={this.onChange}  value={schoolData.heatKwh}
                     name="heatKwh"  className="form-control" placeholder="Heating Kwh" required/>
                   </div>
                 </div>
@@ -199,12 +199,12 @@ class SaveSchoolPage extends Component {
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <label className="col-form-label">Water euro</label>
-                    <input type="text"  onChange={this.onChange}  value={schoolData.waterEuro}
+                    <input type="number"  onChange={this.onChange}  value={schoolData.waterEuro}
                     name="waterEuro"  className="form-control" placeholder="Water euro" required/>
                   </div>
                   <div className="form-group col-md-6">
                     <label className="col-form-label">Water Liter</label>
-                    <input type="text"  onChange={this.onChange}  value={schoolData.waterLiter}
+                    <input type="number"  onChange={this.onChange}  value={schoolData.waterLiter}
                     name="waterLiter"  className="form-control" placeholder="Water Kwh" required/>
                   </div>
                 </div>

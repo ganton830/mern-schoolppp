@@ -40,9 +40,14 @@ class TablesPage extends Component {
   render() {
     const apis = this.state.users.map((item, i) => {
       return <tr key={item._id}>
-        <td className="ellipsis">{i + 1}</td>
+        <td>{i + 1}</td>
+        <td>
+        <div className="d-inline-block mr-2">
+          <img src={process.env.PUBLIC_URL + '/default.jpg'} className="rounded-circle " height="32px"/>
+        </div>
+        </td>
         <td>{item.username}</td>
-        <td className="ellipsis">{item.email}</td>
+        <td>{item.email}</td>
         <td>
           <div className="btn-toolbar button-center">
 
@@ -66,6 +71,7 @@ class TablesPage extends Component {
                 <thead>
                   <tr>
                     <th>No</th>
+                    <th>Avatar</th>
                     <th>User Name</th>
                     <th>Email</th>
                     <th>Actions</th>

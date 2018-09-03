@@ -54,7 +54,7 @@ exports.createUser = async function (user) {
   let newUser = new User({
     username: user.username,
     email: user.email,
-    avatar: user.avatar,
+    file: user.file,
   });
 
   newUser.password = await bcrypt.hash(user.password, 10);
