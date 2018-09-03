@@ -54,7 +54,7 @@ exports.createUser = async function (user) {
   let newUser = new User({
     username: user.username,
     email: user.email,
-    file: user.file,
+    avatar: user.avatar,
   });
 
   newUser.password = await bcrypt.hash(user.password, 10);
@@ -83,33 +83,15 @@ exports.getUserById = async function (id) {
 };
 
 
-exports.updateUser = async function (user) {
-  let id = user.id;
-  let oldUser;
+exports.updateUser = async function (id, user) {
+  console.log('=====this is updatae user =====');
 
-  try {
-    //Find the old User Object by the Id
-    oldUser = await User.findById(id);
-  } catch (e) {
-    throw Error("Error occured while Finding the User");
-  }
-
-  // If no old User Object exists return false
-  if (!oldUser) {
-    return false;
-  }
-
-  //Edit the User Object
-  oldUser.firstName = user.firstName || oldUser.firstName;
-  oldUser.lastName = user.lastName || oldUser.lastName;
-  oldUser.avatar = user.avatar || oldUser.avatar;
-
-  try {
-    let savedUser = await oldUser.save();
-    return savedUser;
-  } catch (e) {
-    throw Error("And Error occured while updating the User");
-  }
+  let savedUser = User.findByIdAndUpdate(id, user, function (error, user) {
+    if (error) return
+    else {
+      return savedUser;
+    }
+  })
 };
 
 exports.deleteUser = async function (id) {

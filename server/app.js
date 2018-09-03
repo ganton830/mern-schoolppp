@@ -35,7 +35,7 @@ app.use(cors());
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.join(__dirname, 'app_api')));
 
-app.use('/api', function(req, res, next) {
+app.use('/api', function (req, res, next) {
   res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -53,24 +53,20 @@ app.post('/upload', (req, res, next) => {
   //  file.originalname.split('.')[file.originalname.split('.').length -1];
   console.log('=======')
   var datetimestamp = Date.now();
-  console.log(datetimestamp+'-'+req.files.file.name);
+  console.log(datetimestamp + '-' + req.files.file.name);
 
 
   let imageFile = req.files.file;
-  let filename = datetimestamp+'-'+req.files.file.name;
-  imageFile.mv(`${__dirname}/public/${filename}`, function(err) {
+  let filename = datetimestamp + '-' + req.files.file.name;
+  imageFile.mv(`${__dirname}/public/${filename}`, function (err) {
     if (err) {
       return res.status(500).send(err);
     }
 
-    res.json({file: `public/${filename}`});
+    res.json({ file: `public/${filename}` });
   });
 
 })
-
-
-
-
 
 // api routes
 // app.use('/users', require('./users/users.controller'));
@@ -80,7 +76,7 @@ app.use('/user', require('./app_api/routes/user.route'));
 app.use('/api', apiRoutes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);

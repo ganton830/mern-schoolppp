@@ -62,7 +62,7 @@ exports.createUser = async function (req, res, next) {
     email: req.body.email,
     password: req.body.password,
     username: req.body.username,
-    file:''
+    avatar: '/default.jpg'
   };
 
   try {
@@ -79,9 +79,18 @@ exports.createUser = async function (req, res, next) {
 exports.updateUserById = async function (req, res, next) {
   let user = {
     email: req.body.email,
-    password: req.body.password,
     username: req.body.username,
+    avatar: req.body.avatar,
   };
+  let id = req.params.id;
+
+  try {
+    let updatedUser = await UserService.updateUser(id, user);
+    console.log('=====call==')
+    return res.status(204).json({ status: 204, message: "Successfully User Deleted" })
+  } catch (e) {
+    return res.status(400).json({ status: 400, message: e.message })
+  }
 
 };
 

@@ -42,9 +42,9 @@ class TablesPage extends Component {
       return <tr key={item._id}>
         <td>{i + 1}</td>
         <td>
-        <div className="d-inline-block mr-2">
-          <img src={process.env.PUBLIC_URL + '/default.jpg'} className="rounded-circle " height="32px"/>
-        </div>
+          <div className="d-inline-block mr-2">
+            <img src={process.env.PUBLIC_URL + item.avatar} className="rounded-circle " height="32px" />
+          </div>
         </td>
         <td>{item.username}</td>
         <td>{item.email}</td>

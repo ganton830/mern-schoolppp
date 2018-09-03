@@ -13,10 +13,12 @@ class TableEditPage extends Component {
       user: {
         username: '',
         email: '',
-      
+        avatar: '',
+
       },
-      avatar: '/default.jpg',
-      value:false
+      avatar: '',
+
+      value: false
     };
 
     this.onChangeImage = this.onChangeImage.bind(this);
@@ -38,6 +40,7 @@ class TableEditPage extends Component {
       .then(response => response.json())
       .then(response => {
         this.setState({ user: response.data })
+        this.setState({ avatar: response.data.avatar })
       });
   }
 
@@ -49,22 +52,27 @@ class TableEditPage extends Component {
 
   onEditSubmit(e) {
     e.preventDefault();
-   
-    const { username, email } = this.state.user;
+
+    const email = this.state.user.email;
+    const username = this.state.user.username;
     const { dispatch } = this.props;
     if (username && email) {
-      this.edit(username, email);
+      this.edit(username, email, this.state.avatar);
     }
   }
 
-  edit(username, email) {
+  edit(username, email, avatar) {
+    console.log('=1231231131=====')
+    console.log(avatar);
+
     const requestOptions = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, email })
+      body: JSON.stringify({ username, email, avatar })
     };
     return fetch('http://127.0.0.1:3003/user/' + this.props.match.params.id, requestOptions)
       .then(response => {
+        console.log('===response')
         this.props.history.push("/tables");
       })
   }
@@ -100,10 +108,10 @@ class TableEditPage extends Component {
 
                   <div className="image-upload">
                     <label htmlFor="file-input">
-                      <img src={process.env.PUBLIC_URL + this.state.avatar} className="rounded-circle " height="50px"  width="50px"/>
+                      <img src={process.env.PUBLIC_URL + this.state.avatar} className="rounded-circle " height="50px" width="50px" />
                     </label>
 
-                    <input ref={(ref) => { this.uploadInput = ref; }} type="file" id="file-input" name="file"   onChange={this.onChangeImage} />
+                    <input ref={(ref) => { this.uploadInput = ref; }} type="file" id="file-input" name="file" onChange={this.onChangeImage} />
                   </div>
 
                 </div>
@@ -120,7 +128,7 @@ class TableEditPage extends Component {
 
               </div>
               <div className="margin2">
-              <button className="btn btn-primary" type="submit">Update</button>
+                <button className="btn btn-primary" type="submit">Update</button>
               </div>
             </form>
           </WidgetComponent>
